@@ -16,6 +16,10 @@ import { useReducedMotion } from 'framer-motion'
 
 const center = {lat: 40.1098, lng: -88.2283}
 const crime1 = {lat: 40.11072, lng: -88.21609} //700 W Green Sr, Urbana IL
+const crime2 = {lat: 40.11317, lng: -88.22525} // 1212 W Springfield Ave
+const crime3 = {lat: 40.10923, lng: -88.23203} // 500 E john street
+const crime4 = {lat: 40.11058, lng: -88.23750} // 112 E green street
+const crime5 = {lat: 40.11266, lng: -88.21989} // 905 W Springfield Ave
 
 
 function App() {
@@ -29,7 +33,11 @@ function App() {
   const [directionsResponse, setDirectionsResponse] = useState(null)
   const [distance, setDistance] = useState('')
   const [duration, setDuration] = useState('')
-  const [check, setCheck] = useState(false)
+  const [check1, setCheck1] = useState(false)
+  const [check2, setCheck2] = useState(false)
+  const [check3, setCheck3] = useState(false)
+  const [check4, setCheck4] = useState(false)
+  const [check5, setCheck5] = useState(false)
 
   /**@type React.MutableRefObject<HTMLInputElement> */
   const originRef = useRef()
@@ -64,12 +72,35 @@ function App() {
       path: results.routes[0].overview_path,
     });
     
-    setCheck(google.maps.geometry.poly.isLocationOnEdge(
+    setCheck1(google.maps.geometry.poly.isLocationOnEdge(
         crime1,
         routePoly,
         10e-4
       ))
+    
+    setCheck2(google.maps.geometry.poly.isLocationOnEdge(
+      crime2,
+      routePoly,
+      10e-4
+    ))
 
+    setCheck3(google.maps.geometry.poly.isLocationOnEdge(
+      crime3,
+      routePoly,
+      10e-4
+    ))
+
+    setCheck4(google.maps.geometry.poly.isLocationOnEdge(
+      crime4,
+      routePoly,
+      10e-4
+    ))
+
+    setCheck5(google.maps.geometry.poly.isLocationOnEdge(
+      crime5,
+      routePoly,
+      10e-4
+    ))
 
   }
 
@@ -77,7 +108,11 @@ function App() {
     setDirectionsResponse(null)
     setDistance('')
     setDuration('')
-    setCheck(false)
+    setCheck1(false)
+    setCheck2(false)
+    setCheck3(false)
+    setCheck4(false)
+    setCheck5(false)
     originRef.current.value = ''
     destintationRef.current.value = ''
   }
@@ -104,7 +139,11 @@ function App() {
 
         {/* const check = React.useState(true); */}
 
-        {check ? <Marker position = {crime1}/> : []}
+        {check1 ? <Marker position = {crime1}/> : []}
+        {check2 ? <Marker position = {crime2}/> : []}
+        {check3 ? <Marker position = {crime3}/> : []}
+        {check4 ? <Marker position = {crime4}/> : []}
+        {check5 ? <Marker position = {crime5}/> : []}
 
           {directionsResponse && <DirectionsRenderer directions = {directionsResponse}/>}
           {/*Display Makers*/}
@@ -128,7 +167,7 @@ function App() {
             <Input type='text' placeholder='Destination' ref = {destintationRef} />
           </Autocomplete>
           <ButtonGroup>
-            <Button colorScheme='purple' type='submit' onClick = {calculateRoute}>
+            <Button colorScheme='blue' type='submit' onClick = {calculateRoute}>
               Calculate Route
             </Button>
             <IconButton
@@ -136,9 +175,15 @@ function App() {
               icon={<FaTimes />}
               onClick={clearRoute}
             />
+            <IconButton
+            aria-label='center back'
+            icon={<FaLocationArrow />}
+            isRound
+            onClick={() => map.panTo(center)}
+            />
           </ButtonGroup>
         </HStack>
-        <HStack spacing={4} justifyContent='space-between'>
+        {/* <HStack spacing={4} justifyContent='space-between'>
           <Text>Distance: {distance}</Text>
           <Text>Duration: {duration} </Text>
           <IconButton
@@ -147,7 +192,7 @@ function App() {
             isRound
             onClick={() => map.panTo(center)}
           />
-        </HStack>
+        </HStack> */}
       </Box>
     </Flex>
   )
