@@ -67,7 +67,7 @@ function App() {
     setCheck(google.maps.geometry.poly.isLocationOnEdge(
         crime1,
         routePoly,
-        10e-1
+        10e-4
       ))
 
 
@@ -77,6 +77,7 @@ function App() {
     setDirectionsResponse(null)
     setDistance('')
     setDuration('')
+    setCheck(false)
     originRef.current.value = ''
     destintationRef.current.value = ''
   }
