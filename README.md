@@ -19,8 +19,9 @@ Open http://localhost:3000 to view in your browser.
  
  # Credits + Contributers
  Contributors : 
- -Anya Gill & Nikhita Punati  - render MAP UI, generate routes
- -Shreenija Dagavolu & Ananya Anand  - outputting crime data, activate markers
+ Anya Gill & Nikhita Punati - render MAP UI, generate routes
+ 
+ Shreenija Dagavolu & Ananya Anand  - outputting crime data, activate markers
  
 
  # Licences
