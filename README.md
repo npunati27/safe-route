@@ -6,16 +6,16 @@ Safe-Route provides a way for students to walk from one destination to another w
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
- **Project Description**
+# Project Description
  
  
  
- **How to Install**
+ # How to Install
  
  
  
- **Credits + Contributers**
+ # Credits + Contributers
  
  
  
- **Liscences**
+ # Liscences
