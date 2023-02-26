@@ -15,6 +15,7 @@ import {useState, useRef} from 'react'
 import { useReducedMotion } from 'framer-motion'
 
 const center = {lat: 40.1098, lng: -88.2283}
+const crime1 = {lat: 40.11072, lng: -88.21609} //700 W Green Sr, Urbana IL
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
     }
     //eslint-disable-next-line no-undef
     const directionsSerivce = new google.maps.DirectionsService()
+    //sends the vals to the API
     const results = await directionsSerivce.route({
       origin: originRef.current.value, 
       destination: destintationRef.current.value, 
@@ -56,6 +58,17 @@ function App() {
     setDirectionsResponse(results)
     setDistance(results.routes[0].legs[0].distance.text)
     setDuration(results.routes[0].legs[0].duration.text)
+    let routePoly = new google.maps.Polyline({
+      path: this.state.response.routes[0].overview_path,
+    });
+    console.log(
+      google.maps.geometry.poly.isLocationOnEdge(
+        crime1,
+        routePoly,
+        10e-5
+      )
+    );
+
 
   }
 
@@ -85,7 +98,12 @@ function App() {
           mapContainerStyle = {{width: '100%', height: '100%'}}
           onLoad = {map => setMap(map)}
         >
-          <Marker position = {center}/> 
+          {/* <Marker position = {center}/> */}
+          
+          if (_____) {
+            <Marker position = {crime1}/> 
+          } 
+
           {directionsResponse && <DirectionsRenderer directions = {directionsResponse}/>}
           {/*Display Makers*/}
         </GoogleMap>
