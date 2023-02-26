@@ -29,6 +29,7 @@ function App() {
   const [directionsResponse, setDirectionsResponse] = useState(null)
   const [distance, setDistance] = useState('')
   const [duration, setDuration] = useState('')
+  const [check, setCheck] = useState(false)
 
   /**@type React.MutableRefObject<HTMLInputElement> */
   const originRef = useRef()
@@ -58,16 +59,16 @@ function App() {
     setDirectionsResponse(results)
     setDistance(results.routes[0].legs[0].distance.text)
     setDuration(results.routes[0].legs[0].duration.text)
+    
     let routePoly = new google.maps.Polyline({
-      path: this.state.response.routes[0].overview_path,
+      path: results.routes[0].overview_path,
     });
-    console.log(
-      google.maps.geometry.poly.isLocationOnEdge(
+    
+    setCheck(google.maps.geometry.poly.isLocationOnEdge(
         crime1,
         routePoly,
-        10e-5
-      )
-    );
+        10e-1
+      ))
 
 
   }
@@ -99,10 +100,10 @@ function App() {
           onLoad = {map => setMap(map)}
         >
           {/* <Marker position = {center}/> */}
-          
-          if (_____) {
-            <Marker position = {crime1}/> 
-          } 
+
+        {/* const check = React.useState(true); */}
+
+        {check ? <Marker position = {crime1}/> : []}
 
           {directionsResponse && <DirectionsRenderer directions = {directionsResponse}/>}
           {/*Display Makers*/}
