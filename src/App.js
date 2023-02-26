@@ -15,6 +15,7 @@ import {useState, useRef} from 'react'
 import { useReducedMotion } from 'framer-motion'
 
 const center = {lat: 40.1098, lng: -88.2283}
+const crime1 = {lat: 40.11072, lng: -88.21609} //700 W Green Sr, Urbana IL
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
   const [directionsResponse, setDirectionsResponse] = useState(null)
   const [distance, setDistance] = useState('')
   const [duration, setDuration] = useState('')
+  const [check, setCheck] = useState(false)
 
   /**@type React.MutableRefObject<HTMLInputElement> */
   const originRef = useRef()
@@ -46,6 +48,7 @@ function App() {
     }
     //eslint-disable-next-line no-undef
     const directionsSerivce = new google.maps.DirectionsService()
+    //sends the vals to the API
     const results = await directionsSerivce.route({
       origin: originRef.current.value, 
       destination: destintationRef.current.value, 
@@ -56,6 +59,17 @@ function App() {
     setDirectionsResponse(results)
     setDistance(results.routes[0].legs[0].distance.text)
     setDuration(results.routes[0].legs[0].duration.text)
+    
+    let routePoly = new google.maps.Polyline({
+      path: results.routes[0].overview_path,
+    });
+    
+    setCheck(google.maps.geometry.poly.isLocationOnEdge(
+        crime1,
+        routePoly,
+        10e-4
+      ))
+
 
   }
 
@@ -63,6 +77,7 @@ function App() {
     setDirectionsResponse(null)
     setDistance('')
     setDuration('')
+    setCheck(false)
     originRef.current.value = ''
     destintationRef.current.value = ''
   }
@@ -85,7 +100,12 @@ function App() {
           mapContainerStyle = {{width: '100%', height: '100%'}}
           onLoad = {map => setMap(map)}
         >
-          <Marker position = {center}/> 
+          {/* <Marker position = {center}/> */}
+
+        {/* const check = React.useState(true); */}
+
+        {check ? <Marker position = {crime1}/> : []}
+
           {directionsResponse && <DirectionsRenderer directions = {directionsResponse}/>}
           {/*Display Makers*/}
         </GoogleMap>
