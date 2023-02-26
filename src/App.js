@@ -15,11 +15,12 @@ import {useState, useRef} from 'react'
 import { useReducedMotion } from 'framer-motion'
 
 const center = {lat: 40.1098, lng: -88.2283}
-const crime1 = {lat: 40.11072, lng: -88.21609} //700 W Green Sr, Urbana IL
+const crime1 = {lat: 40.11072, lng: -88.21609} // 700 W Green Sr, Urbana IL
 const crime2 = {lat: 40.11317, lng: -88.22525} // 1212 W Springfield Ave
 const crime3 = {lat: 40.10923, lng: -88.23203} // 500 E john street
 const crime4 = {lat: 40.11058, lng: -88.23750} // 112 E green street
 const crime5 = {lat: 40.11266, lng: -88.21989} // 905 W Springfield Ave
+
 
 
 function App() {
@@ -76,32 +77,31 @@ function App() {
         crime1,
         routePoly,
         10e-4
-      ))
-    
-    setCheck2(google.maps.geometry.poly.isLocationOnEdge(
-      crime2,
-      routePoly,
-      10e-4
-    ))
+      ));
 
+    setCheck2(google.maps.geometry.poly.isLocationOnEdge(
+        crime2,
+        routePoly,
+        10e-4
+      ));
+    
     setCheck3(google.maps.geometry.poly.isLocationOnEdge(
-      crime3,
-      routePoly,
-      10e-4
-    ))
+        crime3,
+        routePoly,
+        10e-4
+      ));
 
     setCheck4(google.maps.geometry.poly.isLocationOnEdge(
-      crime4,
-      routePoly,
-      10e-4
-    ))
+        crime4,
+        routePoly,
+        10e-4
+      ));
 
     setCheck5(google.maps.geometry.poly.isLocationOnEdge(
-      crime5,
-      routePoly,
-      10e-4
-    ))
-
+        crime5,
+        routePoly,
+        10e-4
+      ));
   }
 
   function clearRoute() {
@@ -139,11 +139,11 @@ function App() {
 
         {/* const check = React.useState(true); */}
 
-        {check1 ? <Marker position = {crime1}/> : []}
-        {check2 ? <Marker position = {crime2}/> : []}
-        {check3 ? <Marker position = {crime3}/> : []}
-        {check4 ? <Marker position = {crime4}/> : []}
-        {check5 ? <Marker position = {crime5}/> : []}
+        {check1 ? <Marker position = {crime1} title = {'RAPE on 12/29/22'}/> : []}
+        {check2 ? <Marker position = {crime2} title = {'THEFT on 1/19/23'}/> : []}
+        {check3 ? <Marker position = {crime3} title = {'ASSAULT on 11/10/22'}/> : []}
+        {check4 ? <Marker position = {crime4} title = {'BATTERY on 10/7/22'}/> : []}
+        {check5 ? <Marker position = {crime5} title = {'SEXUAL ASSAULT on 2/13/23'}/> : []}
 
           {directionsResponse && <DirectionsRenderer directions = {directionsResponse}/>}
           {/*Display Makers*/}
@@ -180,7 +180,7 @@ function App() {
             icon={<FaLocationArrow />}
             isRound
             onClick={() => map.panTo(center)}
-            />
+          />
           </ButtonGroup>
         </HStack>
         {/* <HStack spacing={4} justifyContent='space-between'>
