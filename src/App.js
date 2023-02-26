@@ -139,7 +139,7 @@ function App() {
 
         {/* const check = React.useState(true); */}
 
-        {check1 ? <Marker position = {crime1} title = {'RAPE on 12/29/22'}/> : []}
+        {check1 ? <Marker position = {crime1} title = {'ASSAULT on 12/29/22'}/> : []}
         {check2 ? <Marker position = {crime2} title = {'THEFT on 1/19/23'}/> : []}
         {check3 ? <Marker position = {crime3} title = {'ASSAULT on 11/10/22'}/> : []}
         {check4 ? <Marker position = {crime4} title = {'BATTERY on 10/7/22'}/> : []}
