@@ -1,0 +1,29 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-saferoute1-dev-205125-authRole",
+      "UnauthRoleArn": "arn:aws:iam::181227477537:role/amplify-saferoute1-dev-205125-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::181227477537:role/amplify-saferoute1-dev-205125-authRole",
+      "Region": "us-west-1",
+      "DeploymentBucketName": "amplify-saferoute1-dev-205125-deployment",
+      "UnauthRoleName": "amplify-saferoute1-dev-205125-unauthRole",
+      "StackName": "amplify-saferoute1-dev-205125",
+      "StackId": "arn:aws:cloudformation:us-west-1:181227477537:stack/amplify-saferoute1-dev-205125/c4ac2270-f2d3-11ed-bfed-023fd89b12e5",
+      "AmplifyAppId": "d2k4mbr7n64zh3"
+    },
+    "categories": {
+      "function": {
+        "saferoutefunction": {
+          "deploymentBucketName": "amplify-saferoute1-dev-205125-deployment",
+          "s3Key": "amplify-builds/saferoutefunction-3639467944445a44436f-build.zip"
+        }
+      },
+      "storage": {
+        "locationsdb": {}
+      },
+      "api": {
+        "saferouteapi": {}
+      }
+    }
+  }
+}

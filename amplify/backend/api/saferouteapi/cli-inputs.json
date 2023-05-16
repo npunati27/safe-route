@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/locs": {
+      "name": "/locs",
+      "lambdaFunction": "saferoutefunction",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "resourceName": "locationsdb",
+  "tableName": "locationsdb",
+  "partitionKey": {
+    "fieldName": "lat",
+    "fieldType": "number"
+  },
+  "sortKey": {
+    "fieldName": "lng",
+    "fieldType": "number"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
